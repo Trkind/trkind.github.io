@@ -3,9 +3,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
     <title>Document</title>
 </head>
 <body>
     <h1>Zefix Query</h1>
+    <form style="flex-wrap: block;" id="searchForm">
+        <p>
+            <label>Suchtext: <input type="text" id="searchString"></label>
+        </p>
+        <p>
+            <label>Gelöschte Rechtseinheiten suchen: <input type="radio" id="searchDeletedEntries"></label>
+        </p>
+        <p>
+            <label>In bisherigen Firmen/Namen suchen: <input type="radio" id="searchInOldNames"></label>
+        </p>
+        <p>
+            <input type="submit" value="Search" onsubmit="submit()">
+        </p>
+    </form>
+    <p></p>
+    <div id="results">
+
+    </div>
 </body>
 </html>
