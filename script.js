@@ -15,11 +15,16 @@ window.addEventListener("load", () => {
 
         let answer = JSON.parse(event.target.responseText).suggestions
 
+        count = 0
         for (const a of answer){
           myNode.appendChild(document.createTextNode(a))
           myNode.appendChild(document.createElement("br"))
+          count++
         }
 
+        if(count == 0){
+          myNode.appendChild(document.createTextNode("Leider nichts gefunden..."))
+        }
         
         
         document.getElementById("results").value = list
@@ -45,10 +50,16 @@ window.addEventListener("load", () => {
   
     // Add 'submit' event handler
     form.addEventListener("submit", (event) => {
+
       event.preventDefault();
       let searchString = document.getElementById("searchString").value
       let searchDeletedEntries = document.getElementById("searchDeletedEntries").checked
       let searchInOldNames = document.getElementById("searchInOldNames").checked
+
+      if(searchString == null || searchString == ""){
+        alert("Bitte Suchtext eingeben :)")
+        return
+      }
 
       const paramsObj = {prefix: searchString, deletedFirms: searchDeletedEntries, formerNames: searchInOldNames};
       const searchParams = new URLSearchParams(paramsObj);
